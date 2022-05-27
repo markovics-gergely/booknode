@@ -1,0 +1,30 @@
+<%- include('../header', { title: 'BookStore - Authors' }) -%>
+<%- include('../navigation', { isBook: false }) -%>
+<div class="container mb-2">
+    <div class="row mt-1">
+        <h1>Authors</h1>
+    </div>
+    <div class="row main-container">
+        <div class="col-12">
+            <% authors.forEach(function(author) { %>
+                <div class="row row-data col-12 my-2 mx-auto py-3">
+                    <div class="col-md-10 col-12 my-2">
+                        <div class="row mx-3 py-4 white-bg">
+                            <span class="align-middle">Name:</span>
+                            <span class="align-middle"><%= author.name %></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-12 my-2">
+                        <a class="btn btn-light detail-button" href="/author/details/<%= author._id %>" role="button">Details</a>
+                    </div>
+                </div>
+            <% }); %> 
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-light add-book" style="width: 100%;" href="/author/save" role="button">Add Author</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../footer') -%>

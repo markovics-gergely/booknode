@@ -1,0 +1,91 @@
+<%- include('../header', { title: 'BookStore - Book edit or create' }) -%>
+<%- include('../navigation', { isBook: true }) -%>
+  <form method="post" class="container mb-2">
+    <div class="row mt-1">
+      <div class="col-6 pull-left p-0">
+        <h1 class="text-left">Book edit or create</h1>
+      </div>
+      <div class="col-6 pull-right p-0 d-flex align-items-center justify-content-end">
+        <a class="btn btn-light add-book mb-0" style="width: 20%;" href="/" role="button">Back</a>
+      </div>
+    </div>
+    <div class="row main-container">
+      <div class="col-12">
+        <div class="form-group row row-data col-12 my-2 mx-auto py-3">
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <label class="align-middle">Title</label>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <input name="title" id="title" type="text" class="form-control align-middle" required
+                     value="<%= (typeof book === 'undefined') ? '' : book.title %>"></input>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row row-data col-12 my-2 mx-auto py-3">
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <label class="align-middle">Author</label>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <select name="author" id="author" class="form-control align-middle" required>
+                 <% for (var i = 0; i < authors.length; i++) { %>
+                   <option value="<%= authors[i]._id %>"><%= authors[i].name %></option>
+                 <% } %> 
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row row-data col-12 my-2 mx-auto py-3">
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <label class="align-middle">Genre</label>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <input name="genre" id="genre" type="text" class="form-control align-middle" required
+                     value="<%= (typeof book === 'undefined') ? '' : book.genre %>"></input>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row row-data col-12 my-2 mx-auto py-3">
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <label class="align-middle">Language</label>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <input name="language" id="language" type="text" class="form-control align-middle" required
+                     value="<%= (typeof book === 'undefined') ? '' : book.language %>"></input>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row row-data col-12 my-2 mx-auto py-3">
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg">
+              <label class="align-middle">In stock</label>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 my-2">
+            <div class="row mx-3 py-4 white-bg green-bg">
+              <input name="isStocked" id="isStocked" type="checkbox" class="form-control align-middle"
+                     checked="<%= (typeof book === 'undefined') ? true : book.isStocked %>"></input>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-12">
+            <input type="submit" class="btn btn-light add-book" style="width: 100%;" value="Save book"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+<%- include('../footer') -%>

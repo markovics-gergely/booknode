@@ -1,0 +1,47 @@
+<%- include('header', { title: 'BookStore - Books' }) -%>
+<%- include('navigation', { isBook: true }) -%>
+<div class="container mb-2">
+    <div class="row mt-1">
+        <h1>Books</h1>
+    </div>
+    <div class="row main-container">
+        <div class="col-12">
+            <% books.forEach( function(book) { %>
+                <div class="row row-data col-12 my-2 mx-auto py-3">
+                    <div class="col-md-4 col-12 my-2">
+                        <div class="row mx-3 py-4 white-bg">
+                            <span class="align-middle">Title:</span>
+                            <span class="align-middle"><%= book.title %></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 my-2">
+                        <div class="row mx-3 py-4 white-bg">
+                            <span class="align-middle">Written by:</span>
+                            <span class="align-middle"><%= book.author.name %></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-12 my-2">
+                        <% if (book.isStocked) { %>
+                            <div class="row mx-3 py-4 my-auto white-bg green-bg">
+                                <span class="align-middle">Stocked</span>
+                            </div>
+                        <% } else { %>
+                            <div class="row mx-3 py-4 my-auto white-bg red-bg">
+                                <span class="align-middle">Not stocked</span>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="col-md-2 col-12 my-2">
+                        <a class="btn btn-light detail-button" href="/book/details/<%= book._id %>" role="button">Details</a>
+                    </div>
+                </div>
+            <% }); %> 
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-light add-book" style="width: 100%;" href="/book/save" role="button">Add book</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>

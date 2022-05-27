@@ -1,0 +1,102 @@
+<%- include('../header', { title: 'BookStore - Author details' }) -%>
+<%- include('../navigation', { isBook: false }) -%>
+<div class="container mb-2">
+    <div class="row mt-1">
+        <div class="col-6 pull-left p-0">
+            <h1 class="text-left"><%= author.name %></h1>
+        </div>
+        <div class="col-6 pull-right p-0 d-flex align-items-center justify-content-end">
+            <a class="btn btn-light add-book mb-0" style="width: 20%;" href="/author" role="button">Back</a>
+        </div>
+    </div>
+    <div class="row main-container">
+        <div class="col-12">
+            <div class="row row-data col-12 my-2 mx-auto py-3">
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle">Born place</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle"><%= author.bornPlace %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-data col-12 my-2 mx-auto py-3">
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle">Born time</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle"><%= author.bornTime.toISOString().slice(0, 10) %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-data col-12 my-2 mx-auto py-3">
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle">Alias</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle"><%= author.alias %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-data col-12 my-2 mx-auto py-3">
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle">Death place</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle"><%= author.deathPlace %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-data col-12 my-2 mx-auto py-3">
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle">Death time</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle"><%= author.deathTime.toISOString().slice(0, 10) %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-data col-12 my-2 mx-auto py-3">
+                <div class="col-md-6 col-12 my-2">
+                    <div class="row mx-3 py-4 white-bg">
+                        <span class="align-middle">Books</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 my-2">
+                    <% for (var i = 0; i < books.length; i++) { %>
+                        <div class="row mx-3 py-4 book-bg mb-1">
+                            <span class="align-middle"><%= books[i].title %></span>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-light add-book" style="width: 100%;" href="/author/edit/<%= author.id %>" role="button">Edit author</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-light add-book" style="width: 100%;" href="/author/del/<%= author.id %>" role="button">Delete author</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../footer') -%>
